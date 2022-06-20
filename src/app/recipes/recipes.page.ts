@@ -9,10 +9,25 @@ import { RecipesService } from '../services/recipes.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecipesPage implements OnInit {
-  recipes: IRecipe[] = [];
+  recipes: IRecipe[];
   constructor(private recipeService: RecipesService) {}
 
   ngOnInit() {
     this.recipes = this.recipeService.getAllRecipes();
+    console.log('ngOnInit');
+  }
+
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter');
+    this.recipes = this.recipeService.getAllRecipes();
+  }
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter');
+  }
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+  }
+  ionViewDidLeave() {
+    console.log('ionicViewDidLeave');
   }
 }
